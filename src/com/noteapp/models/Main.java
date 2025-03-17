@@ -1,5 +1,6 @@
 package com.noteapp.models;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -20,8 +21,16 @@ public class Main {
             System.out.println("9. Stoppen");
             System.out.print("Kies een optie: ");
 
-            int keuze = scanner.nextInt();
-            scanner.nextLine(); // Verwijder newline teken na nextInt()
+            int keuze = -1;  // Start met een ongeldige keuze
+            try {
+                keuze = scanner.nextInt();
+                scanner.nextLine(); // Verwijder newline teken na nextInt()
+            } catch (InputMismatchException e) {
+                // Als er een fout is in de invoer (bijvoorbeeld een letter), geef een foutmelding
+                System.out.println("Ongeldige keuze, probeer opnieuw.");
+                scanner.nextLine(); // Verwijder het foute invoer van de scanner
+                continue;  // Ga terug naar de keuze prompt
+            }
 
             switch (keuze) {
                 case 1:
