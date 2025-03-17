@@ -16,7 +16,8 @@ public class Main {
             System.out.println("5. Voeg afbeelding toe");
             System.out.println("6. Voeg schets toe");
             System.out.println("7. Open beveiligde notitie");
-            System.out.println("8. Stoppen");
+            System.out.println("8. Verwijder notitie");
+            System.out.println("9. Stoppen");
             System.out.print("Kies een optie: ");
 
             int keuze = scanner.nextInt();
@@ -80,6 +81,13 @@ public class Main {
                     break;
 
                 case 8:
+                    System.out.print("Voer het ID van de notitie in die je wilt verwijderen: ");
+                    int noteIdForDelete = scanner.nextInt();
+                    scanner.nextLine(); // Verwijder newline teken
+                    noteController.deleteNote(noteIdForDelete);
+                    break;
+
+                case 9:
                     System.out.println("App wordt afgesloten...");
                     scanner.close();
                     return;

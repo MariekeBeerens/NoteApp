@@ -94,4 +94,17 @@ public class NoteController {
         System.out.println("Beveiligde notitie niet gevonden.");
         return false;
     }
+
+    // Verwijder een notitie op basis van het ID
+    public boolean deleteNote(int noteId) {
+        for (Note note : notes) {
+            if (note.getId() == noteId) {
+                notes.remove(note);
+                System.out.println("Notitie met ID " + noteId + " verwijderd.");
+                return true;
+            }
+        }
+        System.out.println("Notitie met ID " + noteId + " niet gevonden.");
+        return false;
+    }
 }
